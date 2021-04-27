@@ -1,0 +1,69 @@
+#include<stdio.h>
+int strLen(char str[])
+{
+    int length=0;
+    while(str[length]!='\0')
+    {
+        length++;
+    }
+    return length;
+}
+void firstLetterCaps(char str[])
+{ 
+    int chr;
+    chr=str[0];
+    if(chr>=97 && chr<=122)
+    {
+        chr=chr-32;//using ascii values to interchage small to caps letter
+        str[0]=(char)chr;
+    }
+}
+void findMakeCaps(char str[],char ch)
+{
+    int strChr;
+    int i=0;
+    strChr=ch;
+    while(str[i]!='\0')
+    {  
+        if(str[i]==ch && strChr>=97 && strChr<=122)
+        {
+            str[i]=(char)(strChr-32);
+        }
+        i++;
+    }
+}
+void exstr(char str[],char ch)
+{
+    char cpystr;
+    int i=0,j;
+    while(str[i+2]!='\0')
+    {   
+        j=i+1;
+        printf("\ncheck :%c",str[i]);
+        if(str[i]==ch)
+        {   
+            while(str[j]!='\0')
+            {
+                str[j-1]=str[j];
+                j++;
+                printf("\tinnerloop");
+            }
+            i--;
+        }
+        i++;
+    }
+    if(str[i+1]==ch)
+       str[i+1]=='\0';
+    
+}
+int main()
+{
+    char str[20];
+    scanf("%s",str);
+    printf("value:%d",strLen(str));
+    //firstLetterCaps(str);
+    // findMakeCaps(str,'a');
+    exstr(str,'a');
+    printf("\nstring:%s",str);
+    
+}
