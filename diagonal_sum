@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+void main()
+{
+    int **ptr; //pointer point to the pointer
+    int range; //take range of dimensions
+    int sum = 0;
+    int row=3,col=1;
+    scanf("%d", &range);
+    //dynamic memory allocation for row
+    ptr = (int **)malloc(sizeof(int *) * range);
+    //dynamic memory allocation for column
+    for (int j = 1; j <= range; j++)
+    {
+        ptr[j] = (int *)malloc(sizeof(int) * range);
+    }
+    //get data into array
+    for (int i = 1; i <= range; i++)
+    {
+        for (int j = 1; j <= range; j++)
+        {
+            scanf("%d", &ptr[i][j]);
+        }
+    }    
+    for (int i = 1; i <= range; i++)
+    {
+        for (int j = 1; j <= range; j++)
+        {
+            if (i == j)
+            {
+                sum = sum + ptr[i][j];
+            }
+        }
+    }
+    while (col <= range && row > 0)
+    {
+        sum = sum + ptr[row][col];
+        row--;
+        col++;
+    }
+    printf("%d",sum);
+}
